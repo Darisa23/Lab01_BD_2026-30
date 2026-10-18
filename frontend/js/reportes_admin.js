@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Inicializar fechas por defecto para el reporte por periodo
+  const hoy = new Date().toISOString().split('T')[0];
+  const inicioAnio = `${new Date().getFullYear()}-01-01`;
+  const inputDesde = document.getElementById('fecha-desde');
+  const inputHasta = document.getElementById('fecha-hasta');
+  if (inputDesde && !inputDesde.value) inputDesde.value = inicioAnio;
+  if (inputHasta && !inputHasta.value) inputHasta.value = hoy;
+
   cargarReporteInventario();
   cargarReportePrestamosActivos();
   cargarReporteLibrosMasPrestados();
@@ -37,8 +45,8 @@ async function cargarReportePrestamosActivos() {
       tbody.innerHTML += `
         <tr>
           <td>${p.id_prestamo}</td>
-          <td>${p.nombres || p.usuario || '-'}</td>
-          <td>${p.titulo || '-'}</td>
+          <td>${p.usuario || p.nombres || '-'}</td>
+          <td>${p.libro || p.titulo || '-'}</td>
           <td>${p.fecha_vencimiento || '-'}</td>
           <td>${p.situacion || '-'}</td>
         </tr>
@@ -50,9 +58,10 @@ async function cargarReportePrestamosActivos() {
 async function cargarReporteLibrosMasPrestados() {
   const desde = document.getElementById('fecha-desde').value;
   const hasta = document.getElementById('fecha-hasta').value;
+  if (!desde || !hasta) return;
   const params = new URLSearchParams();
-  if (desde) params.append('desde', desde);
-  if (hasta) params.append('hasta', hasta);
+  params.append('desde', desde);
+  params.append('hasta', hasta);
 
   const res = await peticionAPI(`/reportes/libros-mas-prestados?${params.toString()}`, 'GET');
   const tbody = document.getElementById('tabla-reporte-libros');

@@ -127,7 +127,7 @@ async function cargarMisPrestamos() {
         <tr>
           <td>${p.id_prestamo}</td>
           <td>${p.titulo || p.libro_titulo || '-'}</td>
-          <td>${p.codigo_barras || p.id_ejemplar}</td>
+          <td>${p.ejemplar || p.codigo_barras || p.id_ejemplar}</td>
           <td>${p.fecha_prestamo || p.fecha_solicitud || '-'}</td>
           <td>${p.fecha_vencimiento || '-'}</td>
           <td>${p.estado}</td>

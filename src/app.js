@@ -42,13 +42,21 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // 4. Redirección amigable o alias para /health directo a /api/health
 app.get('/health', (req, res) => res.redirect('/api/health'));
 
+const path = require('path');
+
 // 5. Montaje de rutas con prefijo /api
 app.use('/api', apiRouter);
 
-// 6. Middleware para rutas no encontradas (404)
+// 6. Servir interfaz de usuario estática desde la carpeta frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
+// 7. Middleware para rutas no encontradas (404)
 app.use(notFound);
 
-// 7. Middleware global para manejo de errores
+// 8. Middleware global para manejo de errores
 app.use(errorHandler);
 
 module.exports = app;

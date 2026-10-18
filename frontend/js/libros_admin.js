@@ -77,7 +77,7 @@ async function listarEjemplaresAdmin() {
       tbody.innerHTML += `
         <tr>
           <td>${ej.id_ejemplar}</td>
-          <td>${ej.id_libro} - ${ej.titulo || ''}</td>
+          <td>${ej.id_libro} - ${ej.libro_titulo || ej.titulo || ''}</td>
           <td>${ej.codigo_barras}</td>
           <td>Sala ${ej.sala} - Estante ${ej.estante}</td>
           <td>${ej.estado}</td>

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('usuario', JSON.stringify(res.data.bibliotecario || res.data.usuario));
       localStorage.setItem('tipo_cuenta', 'personal');
-      window.location.href = 'admin-prestamos.html';
+      window.location.href = 'prestamos_admin.html';
     } else {
       alert(res.error?.mensaje || 'Credenciales de personal inválidas');
     }

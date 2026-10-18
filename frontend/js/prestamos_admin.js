@@ -71,8 +71,8 @@ async function cargarPrestamosAdmin() {
       tbody.innerHTML += `
         <tr>
           <td>${p.id_prestamo}</td>
-          <td>${p.nombres || p.id_usuario}</td>
-          <td>${p.titulo || ''} (Ejemplar #${p.id_ejemplar})</td>
+          <td>${p.usuario_nombres || p.nombres || p.id_usuario}${p.usuario_codigo ? ` (${p.usuario_codigo})` : ''}</td>
+          <td>${p.libro_titulo || p.titulo || 'Libro'} (${p.ejemplar_codigo || `Ejemplar #${p.id_ejemplar}`})</td>
           <td>Préstamo: ${p.fecha_prestamo || '-'}<br>Vence: ${p.fecha_vencimiento || '-'}</td>
           <td>${p.estado}</td>
           <td>${botones}</td>
