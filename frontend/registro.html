@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Registro - Biblioteca Universitaria</title>
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+  <header>
+    <h2>Sistema de Biblioteca Universitaria</h2>
+  </header>
+
+  <main class="contenedor">
+
+    <section class="tarjeta">
+
+      <h3>Registro de Nuevo Lector</h3>
+
+      <p>
+        Completa el siguiente formulario para crear tu cuenta.
+      </p>
+
+      <form id="form-registro-lector">
+
+        <div class="grid-2">
+
+          <input
+            type="text"
+            id="reg-codigo"
+            placeholder="Código universitario"
+            required
+          >
+
+          <input
+            type="text"
+            id="reg-identificacion"
+            placeholder="Documento de identificación"
+            required
+          >
+
+          <input
+            type="text"
+            id="reg-nombres"
+            placeholder="Nombres completos"
+            autocomplete="name"
+            required
+          >
+
+          <input
+            type="email"
+            id="reg-correo"
+            placeholder="Correo institucional"
+            autocomplete="email"
+            required
+          >
+
+          <input
+            type="password"
+            id="reg-password"
+            placeholder="Contraseña (mín. 6 caracteres)"
+            minlength="6"
+            autocomplete="new-password"
+            required
+          >
+
+          <select id="reg-rol" required>
+            <option value="" disabled selected>
+              Selecciona tu rol
+            </option>
+
+            <option value="estudiante">Estudiante</option>
+            <option value="docente">Docente</option>
+          </select>
+
+          <input
+            type="text"
+            id="reg-carrera"
+            placeholder="Carrera o departamento (opcional)"
+          >
+
+        </div>
+
+        <button type="submit" id="btn-crear-cuenta">
+          Crear Cuenta
+        </button>
+
+      </form>
+
+      <hr>
+
+      <p>¿Ya tienes una cuenta?</p>
+
+      <button
+        type="button"
+        class="secundario"
+        id="btn-volver-login"
+      >
+        Volver al inicio de sesión
+      </button>
+
+    </section>
+
+  </main>
+
+  <script src="js/API.js"></script>
+  <script src="js/registro.js"></script>
+
+</body>
+
+</html>
