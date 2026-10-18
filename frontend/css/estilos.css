@@ -1,3 +1,8 @@
+```css
+/* =========================================
+   1. CONFIGURACIÓN GENERAL
+========================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,14 +10,60 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-  background-color: #f4f6f9;
-  color: #2c3e50;
-  padding-bottom: 40px;
+:root {
+  color-scheme: light;
+
+  --color-principal: #b91c1c;
+  --color-principal-hover: #991b1b;
+  --color-secundario: #ea580c;
+  --color-acento: #facc15;
+
+  --fondo: #fff8f5;
+  --superficie: #ffffff;
+  --texto: #292524;
+  --texto-secundario: #78716c;
+  --borde: #e7d5d1;
+  --campo: #ffffff;
+
+  --sombra: 0 18px 55px rgba(80, 20, 20, 0.14);
 }
 
-header, nav {
-  background-color: #1e293b;
+/* =========================================
+   2. MODO OSCURO
+========================================= */
+
+:root[data-tema="oscuro"] {
+  color-scheme: dark;
+
+  --color-principal: #ef4444;
+  --color-principal-hover: #dc2626;
+  --color-secundario: #fb923c;
+  --color-acento: #facc15;
+
+  --fondo: #181414;
+  --superficie: #262020;
+  --texto: #f5f5f4;
+  --texto-secundario: #c4b5b0;
+  --borde: #514343;
+  --campo: #302828;
+
+  --sombra: 0 18px 55px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   3. ESTILOS GENERALES DE LAS PÁGINAS
+========================================= */
+
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  padding-bottom: 40px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header,
+nav {
+  background-color: #991b1b;
   color: #ffffff;
   padding: 14px 24px;
   display: flex;
@@ -21,13 +72,14 @@ header, nav {
 }
 
 nav a {
-  color: #cbd5e1;
+  color: #fee2e2;
   text-decoration: none;
   margin-right: 16px;
   font-weight: 500;
 }
 
-nav a:hover, nav a.activo {
+nav a:hover,
+nav a.activo {
   color: #ffffff;
   text-decoration: underline;
 }
@@ -40,53 +92,89 @@ nav a:hover, nav a.activo {
 
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
 .tarjeta {
-  background: #ffffff;
-  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-bottom: 14px;
-  color: #0f172a;
+  color: var(--texto);
 }
+
+p {
+  line-height: 1.6;
+}
+
+/* =========================================
+   4. FORMULARIOS GENERALES
+========================================= */
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
-.fila-filtros {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-input, select, textarea, button {
-  padding: 9px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
+input,
+select,
+textarea,
+button {
+  padding: 11px 13px;
+  border: 1px solid var(--borde);
+  border-radius: 7px;
   font-size: 14px;
 }
 
+input,
+select,
+textarea {
+  background-color: var(--campo);
+  color: var(--texto);
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--texto-secundario);
+  opacity: 0.85;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--color-principal);
+  outline-offset: 1px;
+  border-color: var(--color-principal);
+}
+
 button {
-  background-color: #2563eb;
+  background-color: var(--color-principal);
   color: #ffffff;
   border: none;
   cursor: pointer;
   font-weight: 600;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #1d4ed8;
+  background-color: var(--color-principal-hover);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 button.peligro {
@@ -98,25 +186,42 @@ button.peligro:hover {
 }
 
 button.secundario {
-  background-color: #475569;
+  background-color: #57534e;
+}
+
+button.secundario:hover {
+  background-color: #44403c;
+}
+
+/* =========================================
+   5. TABLAS Y ELEMENTOS GENERALES
+========================================= */
+
+.fila-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 12px;
-  background: #ffffff;
+  background: var(--superficie);
+  color: var(--texto);
 }
 
-th, td {
-  border: 1px solid #e2e8f0;
+th,
+td {
+  border: 1px solid var(--borde);
   padding: 10px;
   text-align: left;
   font-size: 14px;
 }
 
 th {
-  background-color: #f8fafc;
+  background-color: var(--fondo);
   font-weight: 600;
 }
 
@@ -124,8 +229,13 @@ th {
   padding: 10px 14px;
   border-radius: 6px;
   margin-bottom: 16px;
-  background-color: #dbeafe;
-  color: #1e40af;
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+:root[data-tema="oscuro"] .alerta {
+  background-color: #4c2020;
+  color: #fecaca;
 }
 
 .badge {
@@ -136,10 +246,369 @@ th {
   font-weight: 600;
   text-transform: capitalize;
 }
-.estado-disponible, .estado-activo { background-color: #dcfce7; color: #166534; }
-.estado-aprobado { background-color: #e0f2fe; color: #075985; }
-.estado-solicitado { background-color: #fef9c3; color: #854d0e; }
-.estado-devuelto { background-color: #f1f5f9; color: #334155; }
-.estado-rechazado, .estado-bloqueado, .estado-inactivo { background-color: #fee2e2; color: #991b1b; }
-.estado-prestado { background-color: #ede9fe; color: #5b21b6; }
-.estado-perdido { background-color: #fecdd3; color: #9f1239; }
+
+.estado-disponible,
+.estado-activo {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.estado-aprobado {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.estado-solicitado {
+  background-color: #fef9c3;
+  color: #854d0e;
+}
+
+.estado-devuelto {
+  background-color: #f1f5f9;
+  color: #334155;
+}
+
+.estado-rechazado,
+.estado-bloqueado,
+.estado-inactivo {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.estado-prestado {
+  background-color: #ede9fe;
+  color: #5b21b6;
+}
+
+.estado-perdido {
+  background-color: #fecdd3;
+  color: #9f1239;
+}
+
+/* =========================================
+   6. PÁGINA DE INICIO DE SESIÓN
+========================================= */
+
+body.pagina-login {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--fondo);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Encabezado del login */
+
+.encabezado-login {
+  height: 76px;
+  width: 100%;
+  padding: 10px 5%;
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--color-principal);
+  color: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Logo: altura fija, ancho proporcional */
+
+.logo-biblioteca {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  max-width: calc(100% - 65px);
+}
+
+.logo-biblioteca img {
+  display: block;
+  height: 54px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Botón de modo claro / oscuro */
+
+.btn-tema {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 21px;
+}
+
+.btn-tema:hover {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+/* =========================================
+   7. FRANJAS DECORATIVAS
+========================================= */
+
+.fondo-franjas {
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 48vh;
+  height: 48dvh;
+
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.franja {
+  flex: 1;
+}
+
+.franja-roja {
+  background-color: #dc2626;
+}
+
+.franja-naranja {
+  background-color: #f97316;
+}
+
+.franja-amarilla {
+  background-color: #facc15;
+}
+
+/* =========================================
+   8. CONTENEDOR CENTRAL
+========================================= */
+
+.contenedor-login {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
+
+  padding: 36px 24px 28px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tarjeta de inicio de sesión */
+
+.tarjeta-login {
+  width: min(100%, 570px);
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 48px);
+
+  background-color: var(--superficie);
+  color: var(--texto);
+
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+}
+
+/* Encabezado de la tarjeta */
+
+.encabezado-tarjeta {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.icono-biblioteca {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 68px;
+  height: 68px;
+  margin-bottom: 16px;
+
+  border-radius: 18px;
+  background-color: #fee2e2;
+  font-size: 34px;
+}
+
+:root[data-tema="oscuro"] .icono-biblioteca {
+  background-color: #4c2020;
+}
+
+.encabezado-tarjeta h1 {
+  margin-bottom: 10px;
+  color: var(--color-principal);
+  font-size: clamp(26px, 4vw, 34px);
+}
+
+.encabezado-tarjeta p {
+  max-width: 360px;
+  margin: 0 auto;
+  color: var(--texto-secundario);
+  font-size: 15px;
+}
+
+/* Campos del login */
+
+.tarjeta-login form {
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label {
+  color: var(--texto);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.campo input {
+  min-height: 48px;
+  padding: 13px 14px;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+.campo input:focus {
+  outline: 2px solid var(--color-principal);
+  outline-offset: 1px;
+}
+
+/* Botón principal */
+
+.btn-principal {
+  width: 100%;
+  min-height: 49px;
+  margin-top: 6px;
+
+  background-color: var(--color-principal);
+  color: #ffffff;
+
+  border-radius: 9px;
+  font-size: 16px;
+}
+
+.btn-principal:hover {
+  background-color: var(--color-principal-hover);
+  transform: translateY(-1px);
+}
+
+/* Separador antes del registro */
+
+.separador {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 27px 0 18px;
+
+  color: var(--texto-secundario);
+  font-size: 13px;
+  text-align: center;
+}
+
+.separador::before,
+.separador::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--borde);
+}
+
+/* Botón de registro */
+
+.btn-registro {
+  width: 100%;
+  min-height: 47px;
+
+  background-color: transparent;
+  color: var(--color-principal);
+
+  border: 2px solid var(--color-principal);
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+.btn-registro:hover {
+  background-color: var(--color-principal);
+  color: #ffffff;
+}
+
+/* Texto debajo de la tarjeta */
+
+.texto-inferior {
+  margin-top: 25px;
+  padding: 8px 14px;
+
+  color: #ffffff;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   9. DISEÑO RESPONSIVO
+========================================= */
+
+@media (max-width: 600px) {
+
+  .encabezado-login {
+    height: 68px;
+    padding: 8px 18px;
+  }
+
+  .logo-biblioteca img {
+    height: 46px;
+  }
+
+  .btn-tema {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contenedor-login {
+    min-height: calc(100vh - 68px);
+    min-height: calc(100dvh - 68px);
+    padding: 28px 16px 24px;
+  }
+
+  .tarjeta-login {
+    padding: 27px 21px;
+    border-radius: 16px;
+  }
+
+  .encabezado-tarjeta {
+    margin-bottom: 24px;
+  }
+
+  .fondo-franjas {
+    height: 42dvh;
+  }
+
+  .texto-inferior {
+    font-size: 12px;
+  }
+
+}

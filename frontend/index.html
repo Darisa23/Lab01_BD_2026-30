@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-tema="claro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,61 +10,157 @@
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 
-<body>
+<body class="pagina-login">
 
-  <header>
-    <h2>Sistema de Biblioteca Universitaria</h2>
+  <!-- Encabezado -->
+  <header class="encabezado-login">
+
+    <a href="index.html" class="logo-biblioteca" aria-label="Inicio">
+      <img
+        src="imagenes/logo60aniosUninorte.png"
+        alt="Logo de la Biblioteca Universitaria"
+      >
+    </a>
+
+    <button
+      type="button"
+      id="btn-tema"
+      class="btn-tema"
+      aria-label="Cambiar a modo oscuro"
+      title="Cambiar tema"
+    >
+      🌙
+    </button>
+
   </header>
 
-  <main class="contenedor">
+  <!-- Franjas decorativas del fondo -->
+  <div class="fondo-franjas" aria-hidden="true">
+    <div class="franja franja-roja"></div>
+    <div class="franja franja-naranja"></div>
+    <div class="franja franja-amarilla"></div>
+  </div>
 
-    <section class="tarjeta">
-      <h3>Iniciar Sesión</h3>
+  <!-- Contenido principal -->
+  <main class="contenedor-login">
 
-      <p>Ingresa tus credenciales para acceder al sistema.</p>
+    <section class="tarjeta tarjeta-login">
 
+      <div class="encabezado-tarjeta">
+        <span class="icono-biblioteca" aria-hidden="true">📚</span>
+
+        <h1>Bienvenid@</h1>
+
+        <p>
+          Ingresa a tu cuenta para acceder a la Biblioteca Universitaria.
+        </p>
+      </div>
+
+      <!-- Inicio de sesión unificado -->
       <form id="form-login">
 
-        <input
-          type="email"
-          id="login-correo"
-          placeholder="Correo electrónico"
-          autocomplete="username"
-          required
-        >
+        <div class="campo">
+          <label for="login-correo">Correo electrónico</label>
 
-        <input
-          type="password"
-          id="login-password"
-          placeholder="Contraseña"
-          autocomplete="current-password"
-          required
-        >
+          <input
+            type="email"
+            id="login-correo"
+            placeholder="ejemplo@universidad.edu.co"
+            autocomplete="username"
+            required
+          >
+        </div>
 
-        <button type="submit">
+        <div class="campo">
+          <label for="login-password">Contraseña</label>
+
+          <input
+            type="password"
+            id="login-password"
+            placeholder="Ingresa tu contraseña"
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn-principal">
           Ingresar
         </button>
 
       </form>
 
-      <hr>
-
-      <p>¿Todavía no tienes una cuenta?</p>
+      <div class="separador">
+        <span>¿Eres nuevo en la biblioteca?</span>
+      </div>
 
       <button
         type="button"
-        class="secundario"
         id="btn-registrarse"
+        class="btn-registro"
       >
         Registrarse
       </button>
 
     </section>
 
+    <p class="texto-inferior">
+      Biblioteca Universitaria · Tu conocimiento, nuestro espacio.
+    </p>
+
   </main>
 
+  <!-- Scripts -->
   <script src="js/API.js"></script>
   <script src="js/index.js"></script>
+
+  <!-- Cambio de tema -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const botonTema = document.getElementById('btn-tema');
+      const documento = document.documentElement;
+
+      // Recuperar el tema guardado, si existe
+      const temaGuardado = localStorage.getItem('tema') || 'claro';
+
+      aplicarTema(temaGuardado);
+
+      function aplicarTema(tema) {
+
+        documento.setAttribute('data-tema', tema);
+
+        if (tema === 'oscuro') {
+          botonTema.textContent = '☀️';
+          botonTema.setAttribute(
+            'aria-label',
+            'Cambiar a modo claro'
+          );
+        } else {
+          botonTema.textContent = '🌙';
+          botonTema.setAttribute(
+            'aria-label',
+            'Cambiar a modo oscuro'
+          );
+        }
+
+      }
+
+      botonTema.addEventListener('click', () => {
+
+        const temaActual =
+          documento.getAttribute('data-tema');
+
+        const nuevoTema =
+          temaActual === 'claro' ? 'oscuro' : 'claro';
+
+        aplicarTema(nuevoTema);
+
+        localStorage.setItem('tema', nuevoTema);
+
+      });
+
+    });
+  </script>
 
 </body>
 </html>

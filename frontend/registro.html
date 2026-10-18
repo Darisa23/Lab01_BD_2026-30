@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-tema="claro">
 
 <head>
   <meta charset="UTF-8">
@@ -10,106 +11,194 @@
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 
-<body>
+<body class="pagina-login">
 
-  <header>
-    <h2>Sistema de Biblioteca Universitaria</h2>
+  <!-- Encabezado con el logo -->
+  <header class="encabezado-login">
+
+    <a href="index.html" class="logo-biblioteca" aria-label="Volver al inicio">
+      <img
+        src="imagenes/logo60aniosUninorte.png"
+        alt="Logo de la Biblioteca Universitaria"
+      >
+    </a>
+
+    <!-- No agregamos el botón de tema aquí.
+         El tema se controla desde index.html. -->
+
   </header>
 
-  <main class="contenedor">
+  <!-- Franjas de colores del fondo -->
+  <div class="fondo-franjas" aria-hidden="true">
+    <div class="franja franja-roja"></div>
+    <div class="franja franja-naranja"></div>
+    <div class="franja franja-amarilla"></div>
+  </div>
 
-    <section class="tarjeta">
+  <!-- Formulario de registro -->
+  <main class="contenedor-login">
 
-      <h3>Registro de Nuevo Lector</h3>
+    <section class="tarjeta tarjeta-login tarjeta-registro">
 
-      <p>
-        Completa el siguiente formulario para crear tu cuenta.
-      </p>
+      <div class="encabezado-tarjeta">
+
+        <span class="icono-biblioteca" aria-hidden="true">📚</span>
+
+        <h1>Crear una cuenta</h1>
+
+        <p>
+          Regístrate para acceder al catálogo de la Biblioteca Universitaria.
+        </p>
+
+      </div>
 
       <form id="form-registro-lector">
 
         <div class="grid-2">
 
-          <input
-            type="text"
-            id="reg-codigo"
-            placeholder="Código universitario"
-            required
-          >
+          <!-- Código universitario -->
+          <div class="campo">
+            <label for="reg-codigo">Código universitario</label>
 
-          <input
-            type="text"
-            id="reg-identificacion"
-            placeholder="Documento de identificación"
-            required
-          >
+            <input
+              type="text"
+              id="reg-codigo"
+              placeholder="Tu código universitario"
+              required
+            >
+          </div>
 
-          <input
-            type="text"
-            id="reg-nombres"
-            placeholder="Nombres completos"
-            autocomplete="name"
-            required
-          >
+          <!-- Documento de identificación -->
+          <div class="campo">
+            <label for="reg-identificacion">
+              Documento de identificación
+            </label>
 
-          <input
-            type="email"
-            id="reg-correo"
-            placeholder="Correo institucional"
-            autocomplete="email"
-            required
-          >
+            <input
+              type="text"
+              id="reg-identificacion"
+              placeholder="Tu número de documento"
+              required
+            >
+          </div>
 
-          <input
-            type="password"
-            id="reg-password"
-            placeholder="Contraseña (mín. 6 caracteres)"
-            minlength="6"
-            autocomplete="new-password"
-            required
-          >
+          <!-- Nombres -->
+          <div class="campo">
+            <label for="reg-nombres">Nombres completos</label>
 
-          <select id="reg-rol" required>
-            <option value="" disabled selected>
-              Selecciona tu rol
-            </option>
+            <input
+              type="text"
+              id="reg-nombres"
+              placeholder="Nombres y apellidos"
+              autocomplete="name"
+              required
+            >
+          </div>
 
-            <option value="estudiante">Estudiante</option>
-            <option value="docente">Docente</option>
-          </select>
+          <!-- Correo -->
+          <div class="campo">
+            <label for="reg-correo">Correo institucional</label>
 
-          <input
-            type="text"
-            id="reg-carrera"
-            placeholder="Carrera o departamento (opcional)"
-          >
+            <input
+              type="email"
+              id="reg-correo"
+              placeholder="ejemplo@universidad.edu.co"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <!-- Contraseña -->
+          <div class="campo">
+            <label for="reg-password">Contraseña</label>
+
+            <input
+              type="password"
+              id="reg-password"
+              placeholder="Mínimo 6 caracteres"
+              minlength="6"
+              autocomplete="new-password"
+              required
+            >
+          </div>
+
+          <!-- Rol -->
+          <div class="campo">
+            <label for="reg-rol">Tipo de usuario</label>
+
+            <select id="reg-rol" required>
+              <option value="" disabled selected>
+                Selecciona tu rol
+              </option>
+
+              <option value="estudiante">Estudiante</option>
+              <option value="docente">Docente</option>
+            </select>
+          </div>
+
+          <!-- Carrera o departamento -->
+          <div class="campo campo-completo">
+            <label for="reg-carrera">
+              Carrera o departamento
+              <span class="texto-opcional">(opcional)</span>
+            </label>
+
+            <input
+              type="text"
+              id="reg-carrera"
+              placeholder="Ej. Ingeniería de Sistemas"
+            >
+          </div>
 
         </div>
 
-        <button type="submit" id="btn-crear-cuenta">
-          Crear Cuenta
+        <button
+          type="submit"
+          id="btn-crear-cuenta"
+          class="btn-principal"
+        >
+          Crear cuenta
         </button>
 
       </form>
 
-      <hr>
-
-      <p>¿Ya tienes una cuenta?</p>
+      <div class="separador">
+        <span>¿Ya tienes una cuenta?</span>
+      </div>
 
       <button
         type="button"
-        class="secundario"
         id="btn-volver-login"
+        class="btn-registro"
       >
         Volver al inicio de sesión
       </button>
 
     </section>
 
+    <p class="texto-inferior">
+      Biblioteca Universitaria · Tu conocimiento, nuestro espacio.
+    </p>
+
   </main>
 
+  <!-- Scripts -->
   <script src="js/API.js"></script>
   <script src="js/registro.js"></script>
+
+  <!-- Aplicar el tema elegido en index.html -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const temaGuardado = localStorage.getItem('tema') || 'claro';
+
+      document.documentElement.setAttribute(
+        'data-tema',
+        temaGuardado
+      );
+
+    });
+  </script>
 
 </body>
 
