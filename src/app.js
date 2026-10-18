@@ -43,14 +43,19 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.get('/health', (req, res) => res.redirect('/api/health'));
 
 const path = require('path');
+const fs = require('fs');
 
 // 5. Montaje de rutas con prefijo /api
 app.use('/api', apiRouter);
 
-// 6. Servir interfaz de usuario estática desde la carpeta frontend
-app.use(express.static(path.join(__dirname, '../frontend')));
+// 6. Servir interfaz de usuario estática (da prioridad a public/ y respaldo a frontend/)
+const directorioEstatico = fs.existsSync(path.join(__dirname, '../public'))
+  ? path.join(__dirname, '../public')
+  : path.join(__dirname, '../frontend');
+
+app.use(express.static(directorioEstatico));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+  res.sendFile(path.join(directorioEstatico, 'index.html'));
 });
 
 // 7. Middleware para rutas no encontradas (404)

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Préstamos, Devoluciones y Multas - Biblioteca</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <nav>
+    <div>
+      <a href="libros_admin.html">Libros y Ejemplares</a>
+      <a href="usuarios_admin.html">Usuarios y Personal</a>
+      <a href="prestamos_admin.html" class="activo">Préstamos y Devoluciones</a>
+      <a href="reportes_admin.html">Reportes</a>
+    </div>
+    <button onclick="cerrarSesion()" class="peligro">Cerrar Sesión</button>
+  </nav>
+
+  <main class="contenedor">
+    <div class="grid-2">
+      <!-- Préstamo Directo en Mostrador -->
+      <section class="tarjeta">
+        <h3>Préstamo Directo en Mostrador</h3>
+        <form id="form-prestamo-directo">
+          <input type="number" id="directo-id-usuario" placeholder="ID del Usuario Lector" required>
+          <input type="number" id="directo-id-ejemplar" placeholder="ID del Ejemplar Físico" required>
+          <button type="submit">Aprobar y Entregar en Mostrador</button>
+        </form>
+      </section>
+
+      <!-- Configuración de Tarifa de Multa -->
+      <section class="tarjeta">
+        <h3>Tarifa de Multa por Día</h3>
+        <p id="texto-tarifa-actual" style="margin-bottom:10px;">Consultando tarifa...</p>
+        <form id="form-actualizar-multa">
+          <input type="number" step="0.01" id="nuevo-valor-multa" placeholder="Nuevo valor por día (Solo Admin)" required>
+          <button type="submit" class="secundario">Actualizar Tarifa</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Gestión de Préstamos -->
+    <section class="tarjeta">
+      <h3>Listado General de Préstamos</h3>
+      <div class="fila-filtros">
+        <select id="filtro-estado-prestamos">
+          <option value="">Todos</option>
+          <option value="solicitado">Solicitados (Pendientes)</option>
+          <option value="aprobado">Aprobados (En curso)</option>
+          <option value="devuelto">Devueltos</option>
+          <option value="rechazado">Rechazados</option>
+          <option value="perdido">Perdidos</option>
+        </select>
+        <button id="btn-filtrar-prestamos">Filtrar</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Libro / Ejemplar</th>
+            <th>Fechas</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-admin-prestamos-body"></tbody>
+      </table>
+    </section>
+
+    <!-- Historial de Devoluciones y Multas -->
+    <section class="tarjeta">
+      <h3>Registro de Devoluciones y Multas</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Devolución</th>
+            <th>ID Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Días Retraso</th>
+            <th>Multa Calculada</th>
+            <th>Estado Físico / Observaciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-devoluciones-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/API.js"></script>
+  <script src="js/prestamos_admin.js"></script>
+</body>
+</html>

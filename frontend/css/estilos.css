@@ -127,3 +127,19 @@ th {
   background-color: #dbeafe;
   color: #1e40af;
 }
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.estado-disponible, .estado-activo { background-color: #dcfce7; color: #166534; }
+.estado-aprobado { background-color: #e0f2fe; color: #075985; }
+.estado-solicitado { background-color: #fef9c3; color: #854d0e; }
+.estado-devuelto { background-color: #f1f5f9; color: #334155; }
+.estado-rechazado, .estado-bloqueado, .estado-inactivo { background-color: #fee2e2; color: #991b1b; }
+.estado-prestado { background-color: #ede9fe; color: #5b21b6; }
+.estado-perdido { background-color: #fecdd3; color: #9f1239; }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Libros y Ejemplares - Biblioteca</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <nav>
+    <div>
+      <a href="libros_admin.html" class="activo">Libros y Ejemplares</a>
+      <a href="usuarios_admin.html">Usuarios y Personal</a>
+      <a href="prestamos_admin.html">Préstamos y Devoluciones</a>
+      <a href="reportes_admin.html">Reportes</a>
+    </div>
+    <button onclick="cerrarSesion()" class="peligro">Cerrar Sesión</button>
+  </nav>
+
+  <main class="contenedor">
+    <div class="grid-2">
+      <!-- Formulario de Libro -->
+      <section class="tarjeta">
+        <h3>Registrar / Editar Libro</h3>
+        <form id="form-libro">
+          <input type="hidden" id="libro-id">
+          <input type="text" id="libro-isbn" placeholder="ISBN" required>
+          <input type="text" id="libro-titulo" placeholder="Título del libro" required>
+          <input type="text" id="libro-editorial" placeholder="Editorial" required>
+          <input type="number" id="libro-anio" placeholder="Año de publicación" required>
+          <input type="text" id="libro-autores" placeholder="Autores (separados por coma)" required>
+          <input type="text" id="libro-categorias" placeholder="Categorías (separadas por coma)">
+          <textarea id="libro-descripcion" placeholder="Descripción"></textarea>
+          <button type="submit">Guardar Libro</button>
+        </form>
+      </section>
+
+      <!-- Formulario de Ejemplar Físico -->
+      <section class="tarjeta">
+        <h3>Registrar Ejemplar Físico</h3>
+        <form id="form-ejemplar">
+          <input type="number" id="ejemplar-id-libro" placeholder="ID del Libro" required>
+          <input type="text" id="ejemplar-codigo" placeholder="Código de Barras" required>
+          <input type="text" id="ejemplar-sala" placeholder="Sala" required>
+          <input type="text" id="ejemplar-estante" placeholder="Estante" required>
+          <select id="ejemplar-estado">
+            <option value="disponible">Disponible</option>
+            <option value="perdido">Perdido</option>
+          </select>
+          <button type="submit">Guardar Ejemplar</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Tabla de Libros -->
+    <section class="tarjeta">
+      <h3>Catálogo General de Libros</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ISBN</th>
+            <th>Título</th>
+            <th>Autores</th>
+            <th>Disponibles / Total</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-admin-libros-body"></tbody>
+      </table>
+    </section>
+
+    <!-- Tabla de Ejemplares -->
+    <section class="tarjeta">
+      <h3>Inventario de Ejemplares Físicos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Ejemplar</th>
+            <th>ID Libro / Título</th>
+            <th>Código de Barras</th>
+            <th>Ubicación</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-admin-ejemplares-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/API.js"></script>
+  <script src="js/libros_admin.js"></script>
+</body>
+</html>

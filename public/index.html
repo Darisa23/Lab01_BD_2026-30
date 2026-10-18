@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso - Biblioteca Universitaria</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h2>Sistema de Biblioteca Universitaria</h2>
+  </header>
+
+  <main class="contenedor">
+    <div class="grid-2">
+      <!-- Login Lector -->
+      <section class="tarjeta">
+        <h3>Iniciar Sesión - Lector (Estudiante / Docente)</h3>
+        <form id="form-login-lector">
+          <input type="email" id="login-correo" placeholder="Correo institucional" required>
+          <input type="password" id="login-password" placeholder="Contraseña" required>
+          <button type="submit">Ingresar como Lector</button>
+        </form>
+      </section>
+
+      <!-- Login Personal Bibliotecario / Administrador -->
+      <section class="tarjeta">
+        <h3>Iniciar Sesión - Personal Biblioteca</h3>
+        <form id="form-login-personal">
+          <input type="email" id="personal-correo" placeholder="Correo del personal" required>
+          <input type="password" id="personal-password" placeholder="Contraseña" required>
+          <button type="submit" class="secundario">Ingresar como Personal</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Registro de Lector -->
+    <section class="tarjeta">
+      <h3>Registro de Nuevo Lector</h3>
+      <form id="form-registro-lector">
+        <div class="grid-2">
+          <input type="text" id="reg-codigo" placeholder="Código universitario" required>
+          <input type="text" id="reg-identificacion" placeholder="Documento de identificación" required>
+          <input type="text" id="reg-nombres" placeholder="Nombres completos" required>
+          <input type="email" id="reg-correo" placeholder="Correo institucional" required>
+          <input type="password" id="reg-password" placeholder="Contraseña (mín. 6 caracteres)" required>
+          <select id="reg-rol" required>
+            <option value="estudiante">Estudiante</option>
+            <option value="docente">Docente</option>
+          </select>
+          <input type="text" id="reg-carrera" placeholder="Carrera o Departamento (Opcional)">
+        </div>
+        <button type="submit">Crear Cuenta de Lector</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/API.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
