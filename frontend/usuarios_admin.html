@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Usuarios y Personal - Biblioteca</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <nav>
+    <div>
+      <a href="libros_admin.html">Libros y Ejemplares</a>
+      <a href="usuarios_admin.html" class="activo">Usuarios y Personal</a>
+      <a href="prestamos_admin.html">Préstamos y Devoluciones</a>
+      <a href="reportes_admin.html">Reportes</a>
+    </div>
+    <button onclick="cerrarSesion()" class="peligro">Cerrar Sesión</button>
+  </nav>
+
+  <main class="contenedor">
+    <div class="grid-2">
+      <!-- Alta de Usuario Lector -->
+      <section class="tarjeta">
+        <h3>Registrar Lector</h3>
+        <form id="form-admin-usuario">
+          <input type="text" id="usr-codigo" placeholder="Código" required>
+          <input type="text" id="usr-identificacion" placeholder="Identificación" required>
+          <input type="text" id="usr-nombres" placeholder="Nombres completos" required>
+          <input type="email" id="usr-correo" placeholder="Correo" required>
+          <input type="password" id="usr-password" placeholder="Contraseña" required>
+          <select id="usr-rol">
+            <option value="estudiante">Estudiante</option>
+            <option value="docente">Docente</option>
+          </select>
+          <input type="text" id="usr-carrera" placeholder="Carrera (Opcional)">
+          <button type="submit">Guardar Lector</button>
+        </form>
+      </section>
+
+      <!-- Alta de Personal (Solo Administrador) -->
+      <section class="tarjeta">
+        <h3>Registrar Personal Bibliotecario (Solo Admin)</h3>
+        <form id="form-admin-bibliotecario">
+          <input type="text" id="bib-nombres" placeholder="Nombres completos" required>
+          <input type="email" id="bib-correo" placeholder="Correo institucional" required>
+          <input type="password" id="bib-password" placeholder="Contraseña" required>
+          <select id="bib-rol">
+            <option value="bibliotecario">Bibliotecario</option>
+            <option value="administrador">Administrador</option>
+          </select>
+          <button type="submit" class="secundario">Registrar Personal</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Padrón de Lectores -->
+    <section class="tarjeta">
+      <h3>Padrón de Lectores</h3>
+      <div class="fila-filtros">
+        <input type="text" id="busqueda-usuarios" placeholder="Buscar por nombre, código o correo...">
+        <button id="btn-buscar-usuarios">Buscar</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Nombres</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-usuarios-body"></tbody>
+      </table>
+    </section>
+
+    <!-- Historial de un Lector -->
+    <section id="seccion-historial-lector" class="tarjeta" style="display:none;">
+      <h3 id="titulo-historial-lector">Historial del Lector</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Préstamo</th>
+            <th>Libro</th>
+            <th>Fecha Préstamo</th>
+            <th>Vencimiento</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-historial-lector-body"></tbody>
+      </table>
+    </section>
+
+    <!-- Listado de Personal Bibliotecario -->
+    <section class="tarjeta">
+      <h3>Personal Bibliotecario (Solo Admin)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-bibliotecarios-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/API.js"></script>
+  <script src="js/usuarios_admin.js"></script>
+</body>
+</html>

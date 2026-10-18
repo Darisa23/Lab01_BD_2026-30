@@ -3,16 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de Biblioteca Universitaria</title>
+  <title>Mis Préstamos - Biblioteca</title>
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+  <nav>
+    <div>
+      <a href="catalogo.html">Catálogo de Libros</a>
+      <a href="prestamos_histo_user.html" class="activo">Mis Préstamos</a>
+    </div>
+    <div>
+      <span id="info-usuario"></span>
+      <button onclick="cerrarSesion()" class="peligro">Cerrar Sesión</button>
+    </div>
+  </nav>
 
-  <!-- CONTENIDO VISUAL ESPECÍFICO DE CADA VISTA (Formularios, Tablas, Modales) -->
+  <main class="contenedor">
+    <section class="tarjeta">
+      <h3>Mi Historial de Préstamos</h3>
+      <div class="fila-filtros">
+        <select id="filtro-estado-mis-prestamos">
+          <option value="">Todos los estados</option>
+          <option value="solicitado">Solicitado</option>
+          <option value="aprobado">Aprobado</option>
+          <option value="rechazado">Rechazado</option>
+          <option value="devuelto">Devuelto</option>
+          <option value="perdido">Perdido</option>
+        </select>
+        <button id="btn-filtrar-mis-prestamos">Filtrar</button>
+      </div>
 
-  <!-- 1. Carga obligatoria del conector base compartido -->
-  <script src="js/api.js"></script>
-  <!-- 2. Carga del archivo JavaScript exclusivo de esta pantalla -->
+      <table>
+        <thead>
+          <tr>
+            <th>ID Préstamo</th>
+            <th>Libro</th>
+            <th>Código Ejemplar</th>
+            <th>Fecha Solicitud / Préstamo</th>
+            <th>Fecha Vencimiento</th>
+            <th>Estado</th>
+            <th>Multa</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-mis-prestamos-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/API.js"></script>
   <script src="js/catalogo.js"></script>
 </body>
 </html>

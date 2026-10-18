@@ -3,16 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de Biblioteca Universitaria</title>
+  <title>Catálogo de Libros - Biblioteca</title>
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+  <nav>
+    <div>
+      <a href="catalogo.html" class="activo">Catálogo de Libros</a>
+      <a href="prestamos_histo_user.html">Mis Préstamos</a>
+    </div>
+    <div>
+      <span id="info-usuario"></span>
+      <button onclick="cerrarSesion()" class="peligro">Cerrar Sesión</button>
+    </div>
+  </nav>
 
-  <!-- CONTENIDO VISUAL ESPECÍFICO DE CADA VISTA (Formularios, Tablas, Modales) -->
+  <main class="contenedor">
+    <div id="banner-multa" class="alerta">Cargando tarifa de multa vigente...</div>
 
-  <!-- 1. Carga obligatoria del conector base compartido -->
-  <script src="js/api.js"></script>
-  <!-- 2. Carga del archivo JavaScript exclusivo de esta pantalla -->
+    <section class="tarjeta">
+      <h3>Buscar Libros en el Catálogo</h3>
+      <form id="form-filtros-catalogo" class="fila-filtros">
+        <input type="text" id="filtro-titulo" placeholder="Título">
+        <input type="text" id="filtro-autor" placeholder="Autor">
+        <input type="text" id="filtro-isbn" placeholder="ISBN">
+        <input type="text" id="filtro-categoria" placeholder="Categoría">
+        <label style="display:flex;align-items:center;gap:6px;">
+          <input type="checkbox" id="filtro-disponible" checked> Solo disponibles
+        </label>
+        <button type="submit">Buscar</button>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ISBN</th>
+            <th>Título</th>
+            <th>Autores</th>
+            <th>Categorías</th>
+            <th>Año</th>
+            <th>Disponibles</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-catalogo-body"></tbody>
+      </table>
+    </section>
+
+    <section id="seccion-ejemplares-libro" class="tarjeta" style="display:none;">
+      <h3 id="titulo-libro-seleccionado">Ejemplares Físicos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Ejemplar</th>
+            <th>Código de Barras</th>
+            <th>Sala</th>
+            <th>Estante</th>
+            <th>Estado</th>
+            <th>Solicitar</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-ejemplares-libro-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/API.js"></script>
   <script src="js/catalogo.js"></script>
 </body>
 </html>

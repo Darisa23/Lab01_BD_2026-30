@@ -3,16 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de Biblioteca Universitaria</title>
+  <title>Reportes y Analítica - Biblioteca</title>
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+  <nav>
+    <div>
+      <a href="libros_admin.html">Libros y Ejemplares</a>
+      <a href="usuarios_admin.html">Usuarios y Personal</a>
+      <a href="prestamos_admin.html">Préstamos y Devoluciones</a>
+      <a href="reportes_admin.html" class="activo">Reportes</a>
+    </div>
+    <button onclick="cerrarSesion()" class="peligro">Cerrar Sesión</button>
+  </nav>
 
-  <!-- CONTENIDO VISUAL ESPECÍFICO DE CADA VISTA (Formularios, Tablas, Modales) -->
+  <main class="contenedor">
+    <!-- 1. Inventario por Estado -->
+    <section class="tarjeta">
+      <h3>1. Resumen de Inventario por Estado</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Estado</th>
+            <th>Total de Ejemplares</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-reporte-inventario"></tbody>
+      </table>
+    </section>
 
-  <!-- 1. Carga obligatoria del conector base compartido -->
-  <script src="js/api.js"></script>
-  <!-- 2. Carga del archivo JavaScript exclusivo de esta pantalla -->
-  <script src="js/catalogo.js"></script>
+    <!-- 2. Préstamos Activos y Vencidos -->
+    <section class="tarjeta">
+      <h3>2. Préstamos Activos y Vencidos</h3>
+      <div class="fila-filtros">
+        <select id="filtro-situacion-activos">
+          <option value="">Todos (Vigentes y Vencidos)</option>
+          <option value="vigente">Solo Vigentes</option>
+          <option value="vencido">Solo Vencidos</option>
+        </select>
+        <button id="btn-cargar-activos">Consultar</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Préstamo</th>
+            <th>Usuario</th>
+            <th>Libro</th>
+            <th>Vencimiento</th>
+            <th>Situación</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-reporte-activos"></tbody>
+      </table>
+    </section>
+
+    <!-- 3. Libros Más Prestados por Periodo -->
+    <section class="tarjeta">
+      <h3>3. Libros Más Prestados por Periodo</h3>
+      <div class="fila-filtros">
+        <input type="date" id="fecha-desde">
+        <input type="date" id="fecha-hasta">
+        <button id="btn-cargar-mas-prestados">Consultar Periodo</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Libro</th>
+            <th>Título</th>
+            <th>Total Préstamos</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-reporte-libros"></tbody>
+      </table>
+    </section>
+
+    <!-- 4. Usuarios con Más Préstamos -->
+    <section class="tarjeta">
+      <h3>4. Usuarios Top con Más Préstamos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Usuario</th>
+            <th>Nombres</th>
+            <th>Rol</th>
+            <th>Total Préstamos</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-reporte-usuarios"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/API.js"></script>
+  <script src="js/reportes_admin.js"></script>
 </body>
 </html>
