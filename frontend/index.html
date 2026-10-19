@@ -38,9 +38,15 @@
     <section class="tarjeta tarjeta-login">
 
       <div class="encabezado-tarjeta">
-        <span class="icono-biblioteca" aria-hidden="true">📚</span>
 
-        <h1>Bienvenid@</h1>
+  <img
+    src="imagenes/logoMariaMulata.png"
+    alt=""
+    class="icono-biblioteca"
+    aria-hidden="true"
+  >
+
+  <h1>Bienvenid@</h1>
 
         <p>
           Ingresa a tu cuenta para acceder a la Biblioteca Universitaria.
@@ -95,53 +101,49 @@
   <script src="js/index.js"></script>
 
   <!-- Cambio de tema -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  <!-- Cambio de tema -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
 
-      const botonTema = document.getElementById('btn-tema');
-      const documento = document.documentElement;
+    const botonTema = document.getElementById('btn-tema');
+    const documento = document.documentElement;
 
-      // Recuperar el tema guardado, si existe
-      const temaGuardado = localStorage.getItem('tema') || 'claro';
+    function aplicarTema(tema) {
 
-      aplicarTema(temaGuardado);
+      documento.setAttribute('data-tema', tema);
 
-      function aplicarTema(tema) {
-
-        documento.setAttribute('data-tema', tema);
-
-        if (tema === 'oscuro') {
-          botonTema.textContent = '☀️';
-          botonTema.setAttribute(
-            'aria-label',
-            'Cambiar a modo claro'
-          );
-        } else {
-          botonTema.textContent = '🌙';
-          botonTema.setAttribute(
-            'aria-label',
-            'Cambiar a modo oscuro'
-          );
-        }
-
+      if (tema === 'oscuro') {
+        botonTema.textContent = '☀️';
+        botonTema.setAttribute('aria-label', 'Cambiar a modo claro');
+        botonTema.setAttribute('title', 'Cambiar a modo claro');
+      } else {
+        botonTema.textContent = '🌙';
+        botonTema.setAttribute('aria-label', 'Cambiar a modo oscuro');
+        botonTema.setAttribute('title', 'Cambiar a modo oscuro');
       }
 
-      botonTema.addEventListener('click', () => {
+    }
 
-        const temaActual =
-          documento.getAttribute('data-tema');
+    // Recuperar el tema guardado
+    const temaGuardado = localStorage.getItem('tema') || 'claro';
+    aplicarTema(temaGuardado);
 
-        const nuevoTema =
-          temaActual === 'claro' ? 'oscuro' : 'claro';
+    // Cambiar de tema al hacer clic
+    botonTema.addEventListener('click', () => {
 
-        aplicarTema(nuevoTema);
+      const temaActual = documento.getAttribute('data-tema');
 
-        localStorage.setItem('tema', nuevoTema);
+      const nuevoTema = temaActual === 'claro'
+        ? 'oscuro'
+        : 'claro';
 
-      });
+      aplicarTema(nuevoTema);
+      localStorage.setItem('tema', nuevoTema);
 
     });
-  </script>
+
+  });
+</script>
 
 </body>
 

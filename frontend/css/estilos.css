@@ -28,9 +28,6 @@
   --sombra: 0 18px 55px rgba(80, 20, 20, 0.14);
 }
 
-/* 
-   2. MODO OSCURO
- */
 
 :root[data-tema="oscuro"] {
   color-scheme: dark;
@@ -297,6 +294,14 @@ body.pagina-login {
   background-color: var(--fondo);
   position: relative;
   isolation: isolate;
+}
+
+.icono-biblioteca {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 12px;
 }
 
 /* Encabezado del login */
@@ -967,4 +972,75 @@ body.pagina-login {
 .enlace-desarrolladores:hover {
   color: var(--color-secundario);
   text-decoration: underline;
+}
+
+/*TEMA*/
+/*
+   MODO CLARO */
+
+html[data-tema="claro"] body.pagina-login {
+    background-color: #f5f5f5;
+    color: #252525;
+}
+
+html[data-tema="claro"] .tarjeta-login {
+    background-color: #ffffff;
+    color: #252525;
+}
+
+html[data-tema="claro"] .tarjeta-login p,
+html[data-tema="claro"] .tarjeta-login label {
+    color: #333333;
+}
+
+html[data-tema="claro"] .tarjeta-login input {
+    background-color: #ffffff;
+    color: #252525;
+    border: 1px solid #cccccc;
+}
+
+/* 
+   MODO OSCURO
+ */
+
+html[data-tema="oscuro"] body.pagina-login {
+    background-color: #181818;
+    color: #f5f5f5;
+}
+
+html[data-tema="oscuro"] .tarjeta-login {
+    background-color: #262626;
+    color: #f5f5f5;
+}
+
+html[data-tema="oscuro"] .tarjeta-login p,
+html[data-tema="oscuro"] .tarjeta-login label {
+    color: #e0e0e0;
+}
+
+html[data-tema="oscuro"] .tarjeta-login input {
+    background-color: #383838;
+    color: #ffffff;
+    border: 1px solid #666666;
+}
+
+html[data-tema="oscuro"] .tarjeta-login input::placeholder {
+    color: #bbbbbb;
+}
+
+html[data-tema="oscuro"] .tarjeta-login .separador {
+    color: #dddddd;
+}
+
+html[data-tema="oscuro"] .enlace-desarrolladores {
+    color: #d7a6ff;
+}
+
+html[data-tema="oscuro"] .texto-inferior {
+    color: #dddddd;
+}
+
+/* Botón para cambiar de tema */
+.btn-tema {
+    cursor: pointer;
 }
