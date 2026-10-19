@@ -975,72 +975,65 @@ body.pagina-login {
 }
 
 /*TEMA*/
-/*
-   MODO CLARO */
 
-html[data-tema="claro"] body.pagina-login {
-    background-color: #f5f5f5;
-    color: #252525;
+/* Variables del tema claro */
+html[data-tema="claro"] {
+    --color-fondo: #f5f5f5;
+    --color-tarjeta: #ffffff;
+    --color-texto: #292929;
+    --color-texto-secundario: #666666;
+    --color-borde: #dddddd;
+    --color-input: #ffffff;
 }
 
-html[data-tema="claro"] .tarjeta-login {
-    background-color: #ffffff;
-    color: #252525;
+/* Variables del tema oscuro */
+html[data-tema="oscuro"] {
+    --color-fondo: #181818;
+    --color-tarjeta: #262626;
+    --color-texto: #f5f5f5;
+    --color-texto-secundario: #cccccc;
+    --color-borde: #494949;
+    --color-input: #333333;
 }
 
-html[data-tema="claro"] .tarjeta-login p,
-html[data-tema="claro"] .tarjeta-login label {
-    color: #333333;
+/* Fondo y textos generales */
+html[data-tema] body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-html[data-tema="claro"] .tarjeta-login input {
-    background-color: #ffffff;
-    color: #252525;
-    border: 1px solid #cccccc;
+/* Tarjetas */
+html[data-tema] .tarjeta {
+    background-color: var(--color-tarjeta);
+    color: var(--color-texto);
+    border-color: var(--color-borde);
 }
 
-/* 
-   MODO OSCURO
- */
-
-html[data-tema="oscuro"] body.pagina-login {
-    background-color: #181818;
-    color: #f5f5f5;
+/* Encabezados y textos */
+html[data-tema] h1,
+html[data-tema] h2,
+html[data-tema] h3,
+html[data-tema] p,
+html[data-tema] label {
+    color: var(--color-texto);
 }
 
-html[data-tema="oscuro"] .tarjeta-login {
-    background-color: #262626;
-    color: #f5f5f5;
+/* Campos de entrada */
+html[data-tema] input,
+html[data-tema] textarea,
+html[data-tema] select {
+    background-color: var(--color-input);
+    color: var(--color-texto);
+    border-color: var(--color-borde);
 }
 
-html[data-tema="oscuro"] .tarjeta-login p,
-html[data-tema="oscuro"] .tarjeta-login label {
-    color: #e0e0e0;
-}
-
-html[data-tema="oscuro"] .tarjeta-login input {
-    background-color: #383838;
-    color: #ffffff;
-    border: 1px solid #666666;
-}
-
-html[data-tema="oscuro"] .tarjeta-login input::placeholder {
-    color: #bbbbbb;
-}
-
-html[data-tema="oscuro"] .tarjeta-login .separador {
-    color: #dddddd;
-}
-
-html[data-tema="oscuro"] .enlace-desarrolladores {
-    color: #d7a6ff;
-}
-
-html[data-tema="oscuro"] .texto-inferior {
-    color: #dddddd;
+html[data-tema] input::placeholder {
+    color: var(--color-texto-secundario);
 }
 
 /* Botón para cambiar de tema */
 .btn-tema {
     cursor: pointer;
+    font-size: 1.4rem;
 }
