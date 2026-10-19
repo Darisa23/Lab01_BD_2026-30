@@ -71,5 +71,13 @@
 
   <script src="js/API.js"></script>
   <script src="js/catalogo.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const temaGuardado = localStorage.getItem('tema') || 'claro';
+
+      document.documentElement.setAttribute('data-tema', temaGuardado);
+    });
+  </script>
 </body>
 </html>

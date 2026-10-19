@@ -94,8 +94,15 @@
       </table>
     </section>
   </main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const temaGuardado = localStorage.getItem('tema') || 'claro';
 
+      document.documentElement.setAttribute('data-tema', temaGuardado);
+    });
+  </script>
   <script src="js/API.js"></script>
   <script src="js/reportes_admin.js"></script>
+  
 </body>
 </html>
