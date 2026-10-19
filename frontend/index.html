@@ -5,9 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Acceso - Biblioteca Universitaria</title>
+  
+<title>Acceso - Mariamulata</title>
 
-  <link rel="stylesheet" href="css/estilos.css">
+<link rel="icon" type="image/png" href="imagenes/logoMariaMulata.png">
+
+<link rel="stylesheet" href="css/estilos.css">
+
 </head>
 
 <body class="pagina-login">
@@ -95,44 +99,6 @@
     </p>
 
   </main>
-
-  
-  <!-- Cambio de tema -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const botonTema = document.getElementById('btn-tema');
-      const documento = document.documentElement;
-
-      // Recuperar el tema guardado
-      let temaGuardado = localStorage.getItem('tema') || 'claro';
-
-      function aplicarTema(tema) {
-        documento.setAttribute('data-tema', tema);
-
-        if (tema === 'oscuro') {
-          botonTema.textContent = '☀️';
-          botonTema.setAttribute('aria-label', 'Cambiar a modo claro');
-          botonTema.setAttribute('title', 'Cambiar a modo claro');
-        } else {
-          botonTema.textContent = '🌙';
-          botonTema.setAttribute('aria-label', 'Cambiar a modo oscuro');
-          botonTema.setAttribute('title', 'Cambiar a modo oscuro');
-        }
-      }
-
-      // Aplicar el tema inicial
-      aplicarTema(temaGuardado);
-
-      // Cambiar el tema al pulsar el botón
-      botonTema.addEventListener('click', () => {
-        const temaActual = documento.getAttribute('data-tema');
-        const nuevoTema = temaActual === 'oscuro' ? 'claro' : 'oscuro';
-
-        aplicarTema(nuevoTema);
-        localStorage.setItem('tema', nuevoTema);
-      });
-    });
-  </script>
 
   <!-- Scripts -->
   <script src="js/API.js"></script>
