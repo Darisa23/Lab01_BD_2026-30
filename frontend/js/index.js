@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const temaGuardado = localStorage.getItem('tema') || 'claro';
     aplicarTema(temaGuardado);
 
-    // Escuchar el botón, si existe en esta página
     if (botonTema) {
         botonTema.addEventListener('click', () => {
             const temaActual = documento.getAttribute('data-tema');

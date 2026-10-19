@@ -1,4 +1,3 @@
-// frontend/js/prestamos_histo_user.js - Historial personal de préstamos del lector
 
 document.addEventListener('DOMContentLoaded', () => {
   const usuario = obtenerUsuarioActual();

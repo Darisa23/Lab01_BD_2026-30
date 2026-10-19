@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     infoUsuario.textContent = `${usuario.nombres} (${usuario.rol || ''}) `;
   }
 
-  // Si estamos en catalogo.html
+  // Si estamos en el catalogo
   if (document.getElementById('tabla-catalogo-body')) {
     cargarTarifaMulta();
     cargarCatalogo();
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Si estamos en mis-prestamos.html
+  // Si estamos en los prestamos del usuario
   if (document.getElementById('tabla-mis-prestamos-body')) {
     cargarMisPrestamos();
     document.getElementById('btn-filtrar-mis-prestamos').addEventListener('click', cargarMisPrestamos);
